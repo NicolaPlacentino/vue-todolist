@@ -8,6 +8,8 @@
 
 /* general */
 
-
+i, span{
+    cursor: pointer;
+}
 
 /* utils */

@@ -16,16 +16,48 @@ che quindi viene aggiunto alla lista dei todo esistenti. */
 const app = Vue.createApp({
     data(){
         return{
+            newTask: {text:'', done:false},
             tasks:[
                 {
                     text: 'Fare la spesa',
+                    done: false
+                },{
+                    text: 'Controllare le email',
+                    done: false
+                },{
+                    text: 'Dare da mangiare al cane',
                     done: true
-                }
+                },{
+                    text: 'Buttare la spazzatura',
+                    done: true
+                },{
+                    text: 'Dare da bere alle piante',
+                    done: false
+                },
             ]
+        }
+    },
+    methods:{
+        deleteTask(i){
+            this.tasks.splice(i, 1)
+        },
+        toggleDone(i){
+            if(this.tasks[i].done === true){
+                this.tasks[i].done = false
+            } else {
+                this.tasks[i].done = true
+            }
+        },
+        addNewTask(){
+            if(this.newTask.text){
+                this.tasks.push(this.newTask)
+                this.newTask = {text:'', done:false}
+            }
+        },
+        deleteAll(){
+            this.tasks = []
         }
     }
 });
-
-// todo DA AGGIUNGERE ID ROOT
 
 app.mount('#root');
